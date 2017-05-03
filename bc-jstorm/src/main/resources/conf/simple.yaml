@@ -1,0 +1,11 @@
+
+storm.cluster.mode: "local"
+#storm.cluster.mode: "distributed"
+
+topology.spout.parallel: 1
+topology.bolt.parallel: 2
+topology.message.timeout.secs: 300
+topology.workers: 2
+
+#metadata.broker.list: master:9092,slave1:9092,slave2:9092
+

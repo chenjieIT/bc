@@ -1,0 +1,7 @@
+target/
+bc-client/target/
+bc-jstorm/target/
+bc-rabbitmq/target/
+bc-util/target/
+bc-redis/target/
+bc-hbase/target/
