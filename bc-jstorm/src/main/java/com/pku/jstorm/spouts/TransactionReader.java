@@ -55,11 +55,14 @@ public class TransactionReader implements IRichSpout {
 					String line=it.next();
 					System.out.println(line);
 					this.collector.emit(new Values(line),line);
+					redis.remove(line);
 				}
 				Thread.sleep(5*10000);
 				
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				System.out.println("FAIL:"+e.getMessage());
+			} catch (Exception e) {
+				System.out.println("FAIL:" + e.getMessage());
 			}
 		}
 	}

@@ -35,6 +35,7 @@ public class TransactionController {
 		try {
 			String signInfo = Sign.sign(JSON.toJSONString(transiction));
 			transiction.setSignInfo(signInfo);
+			//发送到rabbitmq
 			mqProductor.sendMessageToQueue(JSON.toJSONString(transiction));
 		} catch (Exception e) {
 			logger.debug("failed to get message...");

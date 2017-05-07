@@ -18,7 +18,7 @@ import com.rabbitmq.client.Consumer;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
 /*
- * 运行两次这个文件即可
+ * 如果想运行两个消费者，运行两次这个文件即可
  */
 public class MqComsumerWithRobin {
 	
@@ -47,6 +47,7 @@ public class MqComsumerWithRobin {
 	          t.setSignInfo(null);
 	          String data = JSON.toJSONString(t);
 	          try {
+	        	  //验证签名
 	        	  	if(VerifySign.verifySign(data, signData)) {
 	        	  		redisUtil.saveMessage(data);
 	        	  		try {
@@ -54,7 +55,7 @@ public class MqComsumerWithRobin {
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
-	        	  		System.out.println(" [x] Received '" + message + "'");
+
 	        	  	} else {
 	        	  		logger.info("verifySign data failed: "+data);
 	        	  	}

@@ -25,6 +25,13 @@ public class RedisUtil {
     public Set<String> getMessage() {
     	return jedis.smembers("message");
     }
+    
+    public void remove(String key) throws Exception {
+    	if(jedis.srem("message", key) == 0){
+    		throw new Exception("redis key "+key+"is not exixt!!!!");
+    	}
+    }
+   
 }
 
 
